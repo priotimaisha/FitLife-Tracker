@@ -2,13 +2,13 @@
 session_start();
 include('../includes/db.php');
 
-// শুধুমাত্র এডমিন অ্যাক্সেস চেক
+
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit;
 }
 
-// ---------------- ডাইনামিক ডাটা ফেচ ----------------
+
 // Total Members
 $totalMembers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM users WHERE role='user'"))['count'];
 
@@ -152,3 +152,4 @@ $earningsData = array_reverse($earningsData);
 
 </body>
 </html>
+
